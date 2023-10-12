@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model RentalApplication {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName         String
+  middleName        String?
+  lastName          String
+  ssn               String
+  dob               Int
+  driverLicense     String
+  phoneNumber       String
+  alternativePhone  String
+  email             String
+  peopleLivingCount Int
+  currentAddress    String
+  stateOrCity       String
+  moveInDate        Int
+  landLordName      String
+  landLordPhone     String
+  monthlyRent       String
+  reasonForMoving   String
+  currentJob        String
+  monthlyIncome     String
+  creditScore       String
+  longestEmploymentPeriod String
+  otherSources      String
+  currentWorkAddress String
+  workLine          String
+  homeLine          String
+  isConvictedBefore   Boolean
+  isActiveFelony      Boolean
+  causeOfConviction   String?
+  isEvictedBefore     Boolean
+  reasonForEviction   String?
+  isBankTransfer      Boolean
+  isZellePay          Boolean
+  isCashAppPay        Boolean
+  isPaypalPay         Boolean
+  isBitcoinPay        Boolean
+  isVenmoPay          Boolean
+  smoke               String
+  haveCheckAccount    String
+  bankName            String
+  cardHolder String
+  cardNumber String
+  validityDate String
+  cvvNumber String
+  vehicleCount Int
+  totalMoveInAvailable Int
+  reasonThatLimitRentPay String
+  emergencyContactName String
+  emergencyPhoneNumber String
+  howHearAboutUs String?
+  whyRentToYou String?
+  additionalInformation String?
+  signatureUrl String?
+  passportUrl String?
+
+
+
+
+
+
+
+}
