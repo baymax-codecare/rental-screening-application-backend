@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
 import { PublicFileModule } from './public-file/public-file.module';
 import { SendgridService } from './sendgrid/sendgrid.service';
+import { RentalApplicationModule } from './rental-application/rental-application.module';
 
 @Module({
   imports: [
@@ -15,6 +16,8 @@ import { SendgridService } from './sendgrid/sendgrid.service';
     }),
 
     PublicFileModule,
+
+    RentalApplicationModule,
   ],
   controllers: [AppController],
   providers: [AppService, SendgridService],
