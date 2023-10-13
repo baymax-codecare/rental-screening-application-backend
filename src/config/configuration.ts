@@ -9,5 +9,6 @@ export default () => {
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       publicBucketName: process.env.AWS_PUBLIC_BUCKET_NAME,
     },
+    agentEmail: process.env.AGENT_EMAIL,
   };
 };

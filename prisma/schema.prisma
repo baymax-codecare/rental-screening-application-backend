@@ -16,15 +16,15 @@ model RentalApplication {
   middleName        String?
   lastName          String
   ssn               String
-  dob               Int
+  dob               String
   driverLicense     String
   phoneNumber       String
   alternativePhone  String
   email             String
   peopleLivingCount Int
-  currentAddress    String
-  stateOrCity       String
-  moveInDate        Int
+  personalCurrentAddress    String
+  personalStateOrCity       String
+  moveInDate        String
   landLordName      String
   landLordPhone     String
   monthlyRent       String
@@ -56,8 +56,8 @@ model RentalApplication {
   validityDate String
   cvvNumber String
   vehicleCount Int
-  totalMoveInAvailable Int
-  reasonThatLimitRentPay String
+  totalMoveInAvailable String
+  reasonThatLimitRentPay String?
   emergencyContactName String
   emergencyPhoneNumber String
   howHearAboutUs String?
@@ -65,6 +65,8 @@ model RentalApplication {
   additionalInformation String?
   signatureUrl String?
   passportUrl String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
 }
 
 model PublicFile {
