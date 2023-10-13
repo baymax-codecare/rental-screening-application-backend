@@ -65,11 +65,11 @@ model RentalApplication {
   additionalInformation String?
   signatureUrl String?
   passportUrl String?
+}
 
-
-
-
-
-
-
+model PublicFile {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  url      String
+  key      String
+  mimeType String?
 }
