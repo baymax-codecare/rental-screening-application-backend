@@ -1,6 +1,6 @@
 import { DBService } from 'src/shared/db.service';
 import { CreateRentalApplicationDto } from './dto/create-rental-application.dto';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { generateSlug } from 'src/shared/utils';
 
 @Injectable()
@@ -34,10 +34,15 @@ export class RentalApplicationService {
   }
 
   async getApplicationBySlug(slug: string) {
-    return this.dbService.rentalApplication.findFirst({
+    const application = await this.dbService.rentalApplication.findFirst({
       where: {
         slug,
       },
     });
+    if (!application) {
+      throw new HttpException('Application not found', HttpStatus.NOT_FOUND);
+    }
+
+    return application;
   }
 }
