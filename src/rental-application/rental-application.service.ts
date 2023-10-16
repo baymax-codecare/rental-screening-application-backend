@@ -1,6 +1,7 @@
 import { DBService } from 'src/shared/db.service';
 import { CreateRentalApplicationDto } from './dto/create-rental-application.dto';
 import { Injectable } from '@nestjs/common';
+import { generateSlug } from 'src/shared/utils';
 
 @Injectable()
 export class RentalApplicationService {
@@ -10,7 +11,13 @@ export class RentalApplicationService {
     createRentalApplicationDto: CreateRentalApplicationDto,
   ) {
     return this.dbService.rentalApplication.create({
-      data: createRentalApplicationDto,
+      data: {
+        ...createRentalApplicationDto,
+        slug: generateSlug({
+          prefix:
+            `${createRentalApplicationDto.firstName}-${createRentalApplicationDto.lastName}-`.toLowerCase(),
+        }),
+      },
     });
   }
 
@@ -22,6 +29,14 @@ export class RentalApplicationService {
     return this.dbService.rentalApplication.findFirst({
       where: {
         id,
+      },
+    });
+  }
+
+  async getApplicationBySlug(slug: string) {
+    return this.dbService.rentalApplication.findFirst({
+      where: {
+        slug,
       },
     });
   }
