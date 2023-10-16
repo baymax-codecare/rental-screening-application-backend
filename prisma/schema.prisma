@@ -12,6 +12,7 @@ datasource db {
 
 model RentalApplication {
   id                String @id @default(auto()) @map("_id") @db.ObjectId
+  slug              String @unique
   firstName         String
   middleName        String?
   lastName          String

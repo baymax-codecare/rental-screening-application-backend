@@ -20,8 +20,15 @@ export class RentalApplicationController {
     return this.rentalApplicationService.listRentalApplications();
   }
 
-  @Get(':id')
+  @Get('lists/:id')
   async getRentalApplication(@Param('id') id: string) {
     return this.rentalApplicationService.getApplication(id);
+  }
+
+  @Get(':slug')
+  async getRentalApplicationBySlug(@Param('slug') slug: string) {
+    return this.rentalApplicationService.getApplicationBySlug(
+      slug.toLowerCase(),
+    );
   }
 }
